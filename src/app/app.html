@@ -28,7 +28,7 @@
       </li>
       <li><a href="#" [class.active]="currentPage()==='mock-tests'" (click)="navigate('mock-tests',$event)">Mock Tests</a></li>
       <li><a href="#" [class.active]="currentPage()==='current-affairs'" (click)="navigate('current-affairs',$event)">Current Affairs</a></li>
-      <li><a href="#">Study Material <span class="arrow">▾</span></a></li>
+      <li><a href="#" [class.active]="currentPage()==='study-material'" (click)="navigate('study-material',$event)">Study Material <span class="arrow">▾</span></a></li>
       <li><a href="#">Free Resources <span class="arrow">▾</span></a></li>
       <li><a href="#">About Us</a></li>
     </ul>
@@ -707,6 +707,176 @@
 
     </aside>
   </div>
+</div>
+}
+
+<!-- ===== STUDY MATERIALS PAGE ===== -->
+@if (currentPage() === 'study-material') {
+<div class="sm-page">
+
+  <!-- Left Sidebar -->
+  <aside class="sm-sidebar">
+    <div class="sm-sidebar-header">
+      <span class="sm-sidebar-icon">📚</span>
+      <span>Study Material</span>
+    </div>
+    <ul class="sm-sidebar-nav">
+      @for (item of smSidebarItems; track item.name) {
+        <li class="sm-sidebar-item" [class.active]="activeSmSidebar() === item.name" (click)="setSmSidebar(item.name)">
+          <span class="sm-sidebar-item-icon">{{ item.icon }}</span>
+          <span>{{ item.name }}</span>
+        </li>
+      }
+    </ul>
+
+    <div class="sm-quick-links">
+      <div class="sm-quick-title">Quick Links</div>
+      @for (link of smQuickLinks; track link.name) {
+        <div class="sm-quick-item">
+          <span class="sm-quick-icon">{{ link.icon }}</span>
+          <span>{{ link.name }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- App Download Card -->
+    <div class="sm-app-card">
+      <div class="sm-app-title">Get Study Material on the Go!</div>
+      <p class="sm-app-sub">Download the Gyantey Academy App</p>
+      <div class="sm-app-phone">📱</div>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="sm-store-img" /></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="sm-store-img" /></a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="sm-main">
+    <div class="sm-main-header">
+      <div>
+        <h2 class="sm-main-title">Study Materials</h2>
+        <p class="sm-main-sub">High-quality notes, PDFs, e-books and practice sets for your exam preparation.</p>
+      </div>
+      <div class="sm-sort-row">
+        <span class="sm-sort-label">Sort by:</span>
+        <select class="sm-sort-select"><option>Newest</option><option>Popular</option><option>A–Z</option></select>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="sm-filter-tabs">
+      @for (tab of smFilterTabs; track tab) {
+        <button class="sm-tab" [class.active]="activeSmFilter() === tab" (click)="setSmFilter(tab)">{{ tab }}</button>
+      }
+      <button class="sm-tab sm-tab-more">›</button>
+    </div>
+
+    <!-- Stat Cards Row -->
+    <div class="sm-stat-cards">
+      @for (s of smStatCards; track s.label) {
+        <div class="sm-stat-card">
+          <span class="sm-stat-icon" [style.color]="s.color">{{ s.icon }}</span>
+          <div>
+            <div class="sm-stat-count" [style.color]="s.color">{{ s.count }}</div>
+            <div class="sm-stat-label">{{ s.sub }}</div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Latest Materials -->
+    <div class="sm-section-title">Latest Study Materials</div>
+    <div class="sm-materials-list">
+      @for (mat of smMaterials; track mat.title) {
+        <div class="sm-material-row">
+          <div class="sm-mat-icon-wrap" [style.background]="mat.iconBg">
+            <span class="sm-mat-icon">{{ mat.icon }}</span>
+          </div>
+          <div class="sm-mat-body">
+            <div class="sm-mat-title-row">
+              <span class="sm-mat-title">{{ mat.title }}</span>
+              @if (mat.badge) { <span class="sm-mat-badge">{{ mat.badge }}</span> }
+            </div>
+            <div class="sm-mat-lang">{{ mat.lang }}</div>
+            <div class="sm-mat-desc">{{ mat.desc }}</div>
+          </div>
+          <div class="sm-mat-stats">
+            <div class="sm-mat-downloads"><strong>{{ mat.downloads }}</strong><br><span>Downloads</span></div>
+            <div class="sm-mat-size">{{ mat.size }}</div>
+            <button class="sm-mat-dl-btn">⬇</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <button class="sm-view-more">View More Materials ▾</button>
+
+    <!-- Can't find banner -->
+    <div class="sm-cant-find-banner">
+      <div class="sm-cant-find-left">
+        <div class="sm-cant-find-title">Can't find what you're looking for?</div>
+        <div class="sm-cant-find-sub">Request study material and we'll notify you when it's available.</div>
+      </div>
+      <span class="sm-cant-find-emoji">🔍📚</span>
+      <button class="sm-request-btn">Request Material</button>
+    </div>
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="sm-right-sidebar">
+
+    <!-- Top Downloads -->
+    <div class="sm-right-card">
+      <div class="sm-right-card-header">
+        <span class="sm-right-card-title">Top Downloads</span>
+        <a href="#" class="sm-view-all">View All+</a>
+      </div>
+      @for (item of smTopDownloads; track item.num) {
+        <div class="sm-top-dl-row">
+          <span class="sm-top-dl-num">{{ item.num }}</span>
+          <div class="sm-top-dl-icon" [style.background]="item.iconBg">{{ item.icon }}</div>
+          <div class="sm-top-dl-info">
+            <div class="sm-top-dl-name">{{ item.name }}</div>
+            <div class="sm-top-dl-count">{{ item.downloads }}</div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Trending Materials -->
+    <div class="sm-right-card">
+      <div class="sm-right-card-header">
+        <span class="sm-right-card-title">Trending Materials</span>
+        <a href="#" class="sm-view-all">View All+</a>
+      </div>
+      @for (item of smTrendingMaterials; track item) {
+        <div class="sm-trending-row">
+          <span class="sm-trending-arrow">↗</span>
+          <span class="sm-trending-name">{{ item }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Daily Free Material -->
+    <div class="sm-daily-card">
+      <div class="sm-daily-left">
+        <div class="sm-daily-title">Daily Free Material</div>
+        <div class="sm-daily-desc">Get handpicked study material absolutely FREE. Updated every day!</div>
+        <button class="sm-daily-btn">Explore Now</button>
+      </div>
+      <span class="sm-daily-emoji">🎁</span>
+    </div>
+
+    <!-- Stay Updated -->
+    <div class="sm-right-card">
+      <div class="sm-stay-title">Stay Updated</div>
+      <div class="sm-stay-desc">Get latest study materials, exam updates & important PDFs.</div>
+      <div class="sm-stay-form">
+        <input type="email" class="sm-stay-input" placeholder="Enter your email" />
+        <button class="sm-stay-btn">✈</button>
+      </div>
+    </div>
+
+  </aside>
 </div>
 }
 

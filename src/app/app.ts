@@ -14,6 +14,8 @@ export class App {
   activeTestFilter = signal('All');
   activeCaFilter = signal('All');
   activeCaSidebar = signal('Today');
+  activeSmFilter = signal('All');
+  activeSmSidebar = signal('All Study Material');
 
   examCategories = [
     { icon: '🏛', name: 'SSC', active: true },
@@ -163,6 +165,90 @@ export class App {
 
   setCaFilter(f: string) { this.activeCaFilter.set(f); }
   setCaSidebar(s: string) { this.activeCaSidebar.set(s); }
+
+  // Study Materials page data
+  smSidebarItems = [
+    { icon: '📚', name: 'All Study Material' },
+    { icon: '📝', name: 'Notes' },
+    { icon: '📖', name: 'E-books' },
+    { icon: '📋', name: 'PYQ Papers' },
+    { icon: '🗂', name: 'Practice Sets' },
+    { icon: '📊', name: 'Formula Sheets' },
+    { icon: '💡', name: 'Important Topics' },
+    { icon: '📄', name: 'Previous Year Papers' },
+    { icon: '📙', name: 'Exam Guides' },
+    { icon: '⬇️', name: 'Download History' },
+    { icon: '🔖', name: 'Bookmarks' },
+  ];
+
+  smQuickLinks = [
+    { icon: '📈', name: 'Trending Now' },
+    { icon: '⬇️', name: 'Most Downloaded' },
+    { icon: '⭐', name: 'Staff Picks' },
+    { icon: '🏅', name: 'Top Rated' },
+  ];
+
+  smFilterTabs = ['All', 'SSC CGL', 'SSC CHSL', 'SSC MTS', 'SSC GD', 'CPO', 'Stenographer', 'Delhi Police'];
+
+  smStatCards = [
+    { icon: '📝', label: 'Notes', count: '1,250+', sub: 'Study Notes', color: '#7c3aed' },
+    { icon: '📖', label: 'E-books', count: '320+', sub: 'E-books', color: '#10b981' },
+    { icon: '📋', label: 'PYQ Papers', count: '850+', sub: 'PYQ Papers', color: '#f97316' },
+    { icon: '🗂', label: 'Practice Sets', count: '1,100+', sub: 'Practice Sets', color: '#3b82f6' },
+    { icon: '📊', label: 'Formula Sheets', count: '250+', sub: 'Formula Sheets', color: '#f59e0b' },
+  ];
+
+  smMaterials = [
+    {
+      icon: '📕', iconBg: '#fee2e2', badge: 'New',
+      title: 'SSC CGL Tier 1 Complete Notes (All Subjects)',
+      lang: 'English • Hindi', desc: 'Complete notes for Quant, Reasoning, English & GK.',
+      downloads: '12.4K', size: '8.6 MB',
+    },
+    {
+      icon: '📗', iconBg: '#dcfce7', badge: 'New',
+      title: 'General Awareness eBook 2024',
+      lang: 'English • Hindi', desc: '500+ pages eBook covering static GK, current affairs & more.',
+      downloads: '8.7K', size: '12.3 MB',
+    },
+    {
+      icon: '📘', iconBg: '#dbeafe', badge: 'New',
+      title: 'SSC CGL Tier 1 Previous Year Papers (2018-2023)',
+      lang: 'English • Hindi', desc: '6 years PYQ papers with detailed solutions.',
+      downloads: '15.2K', size: '15.8 MB',
+    },
+    {
+      icon: '📙', iconBg: '#fef9c3', badge: '',
+      title: 'Quantitative Aptitude Practice Set – 50 Sets',
+      lang: 'English', desc: '50 full-length practice sets with solutions.',
+      downloads: '9.1K', size: '5.2 MB',
+    },
+    {
+      icon: '📕', iconBg: '#fee2e2', badge: '',
+      title: 'Important Formulas Sheet (All Subjects)',
+      lang: 'English • Hindi', desc: 'Important formulas & shortcuts for quick revision.',
+      downloads: '6.3K', size: '1.1 MB',
+    },
+  ];
+
+  smTopDownloads = [
+    { num: 1, icon: '📕', iconBg: '#fee2e2', name: 'SSC CGL Tier 1 Notes (All Subjects)', downloads: '12.4K Downloads' },
+    { num: 2, icon: '📘', iconBg: '#dbeafe', name: 'SSC CGL Previous Year Papers (2018-23)', downloads: '15.2K Downloads' },
+    { num: 3, icon: '📗', iconBg: '#dcfce7', name: 'General Awareness eBook 2024', downloads: '8.7K Downloads' },
+    { num: 4, icon: '📙', iconBg: '#fef9c3', name: 'Quant 50 Practice Sets', downloads: '9.1K Downloads' },
+    { num: 5, icon: '📕', iconBg: '#fee2e2', name: 'English Vocabulary eBook', downloads: '6.5K Downloads' },
+  ];
+
+  smTrendingMaterials = [
+    'Static GK Important Topics',
+    'Current Affairs Monthly PDF (May 2024)',
+    'Reasoning Short Tricks PDF',
+    'English Grammar Notes',
+    'Science Important Notes',
+  ];
+
+  setSmFilter(f: string) { this.activeSmFilter.set(f); }
+  setSmSidebar(s: string) { this.activeSmSidebar.set(s); }
 
   // Home page data
   courses = [
