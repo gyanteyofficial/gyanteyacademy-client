@@ -3,7 +3,7 @@
   <span class="fire-icon">🔥</span>
   <span>New Year Offer! Get up to <strong>60% OFF</strong> on All Courses. Limited Time Only!</span>
   <div class="top-links">
-    <a href="#"><span class="icon">📱</span> Download App</a>
+    <a href="#" (click)="navigate('download-app',$event)"><span class="icon">📱</span> Download App</a>
     <a href="#"><span class="icon">👤</span> Student Login</a>
     <a href="#"><span class="icon">🎓</span> Teacher Login</a>
   </div>
@@ -1390,6 +1390,167 @@
       <span>Made with ❤️ for Aspirants</span>
     </div>
   </footer>
+
+</div>
+}
+
+<!-- ===== DOWNLOAD APP PAGE ===== -->
+@if (currentPage() === 'download-app') {
+<div class="da-page">
+
+  <!-- Hero Section -->
+  <section class="da-hero">
+    <div class="da-hero-left">
+      <div class="da-hero-label">GYANTEY ACADEMY APP</div>
+      <h1 class="da-hero-heading">Learning Anytime,<br>Anywhere!</h1>
+      <p class="da-hero-desc">Download the Gyantey Academy App and access courses, mock tests, study materials and more – anytime, anywhere.</p>
+
+      <!-- App Feature Icons -->
+      <div class="da-features-row">
+        @for (f of appFeatures; track f.title) {
+          <div class="da-feature-item">
+            <div class="da-feature-icon" [style.background]="f.iconBg" [style.color]="f.iconColor">{{ f.icon }}</div>
+            <div class="da-feature-title">{{ f.title }}</div>
+            <div class="da-feature-desc">{{ f.desc }}</div>
+          </div>
+        }
+      </div>
+
+      <!-- Download Buttons + QR -->
+      <div class="da-download-row">
+        <a href="#" class="da-store-btn da-google-play">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="da-store-badge" />
+        </a>
+        <a href="#" class="da-store-btn da-app-store">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" class="da-store-badge" />
+        </a>
+        <div class="da-qr-wrap">
+          <div class="da-qr-box">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" fill="white"/>
+              <rect x="4" y="4" width="24" height="24" fill="none" stroke="black" stroke-width="2"/>
+              <rect x="8" y="8" width="16" height="16" fill="black"/>
+              <rect x="36" y="4" width="24" height="24" fill="none" stroke="black" stroke-width="2"/>
+              <rect x="40" y="8" width="16" height="16" fill="black"/>
+              <rect x="4" y="36" width="24" height="24" fill="none" stroke="black" stroke-width="2"/>
+              <rect x="8" y="40" width="16" height="16" fill="black"/>
+              <rect x="36" y="36" width="4" height="4" fill="black"/>
+              <rect x="44" y="36" width="4" height="4" fill="black"/>
+              <rect x="52" y="36" width="4" height="4" fill="black"/>
+              <rect x="40" y="44" width="4" height="4" fill="black"/>
+              <rect x="48" y="44" width="4" height="4" fill="black"/>
+              <rect x="36" y="52" width="4" height="4" fill="black"/>
+              <rect x="44" y="52" width="4" height="4" fill="black"/>
+              <rect x="56" y="52" width="4" height="4" fill="black"/>
+            </svg>
+          </div>
+          <span class="da-qr-label">Scan to<br>Download</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone Mockup -->
+    <div class="da-hero-right">
+      <div class="da-phone-wrap">
+        <div class="da-phone-mockup">
+          <div class="da-phone-notch"></div>
+          <div class="da-phone-screen">
+            <div class="da-app-header">
+              <div class="da-app-logo-row">
+                <span class="da-app-logo-icon">🎓</span>
+                <div>
+                  <div class="da-app-logo-name">Gyantey <span style="color:#f97316">Academy</span></div>
+                  <div class="da-app-greeting">Hi, Aspirant! 🔥</div>
+                </div>
+                <span class="da-app-bell">🔔</span>
+              </div>
+              <div class="da-app-banner">
+                <div>
+                  <div class="da-app-banner-title">Let's Crack<br>Your Dream Exam!</div>
+                  <div class="da-app-banner-sub">Prepare smart with India's most trusted platform</div>
+                </div>
+                <span style="font-size:32px">🏆</span>
+              </div>
+            </div>
+            <div class="da-app-body">
+              <div class="da-app-section-row">
+                <span class="da-app-section-title">Continue Learning</span>
+                <span class="da-app-view-all">View All</span>
+              </div>
+              <div class="da-app-progress-card">
+                <div class="da-app-progress-label">Quantitative Aptitude</div>
+                <div class="da-app-progress-bar"><div class="da-app-progress-fill" style="width:45%"></div></div>
+                <div class="da-app-progress-pct">45%</div>
+              </div>
+              <div class="da-app-section-row" style="margin-top:10px">
+                <span class="da-app-section-title">Popular Categories</span>
+                <span class="da-app-view-all">View All</span>
+              </div>
+              <div class="da-app-cats">
+                <div class="da-app-cat"><div class="da-app-cat-icon" style="background:#fee2e2">📝</div><div class="da-app-cat-name">Mock Tests</div></div>
+                <div class="da-app-cat"><div class="da-app-cat-icon" style="background:#dcfce7">📚</div><div class="da-app-cat-name">Study Material</div></div>
+                <div class="da-app-cat"><div class="da-app-cat-icon" style="background:#dbeafe">📰</div><div class="da-app-cat-name">Current Affairs</div></div>
+                <div class="da-app-cat"><div class="da-app-cat-icon" style="background:#fef3c7">🎓</div><div class="da-app-cat-name">Courses</div></div>
+              </div>
+              <div class="da-app-quiz-card">
+                <div>
+                  <div class="da-app-quiz-title">Daily Quiz</div>
+                  <div class="da-app-quiz-sub">Test your knowledge daily</div>
+                </div>
+                <button class="da-app-quiz-btn">Start Quiz</button>
+              </div>
+            </div>
+            <div class="da-app-nav">
+              <div class="da-app-nav-item active">🏠<div>Home</div></div>
+              <div class="da-app-nav-item">🎓<div>Courses</div></div>
+              <div class="da-app-nav-item">📋<div>Mock Tests</div></div>
+              <div class="da-app-nav-item">⬇<div>Downloads</div></div>
+              <div class="da-app-nav-item">👤<div>Profile</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="da-phone-plant">🌿</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our App -->
+  <section class="da-why-section">
+    <h2 class="da-why-title">Why Choose Our App?</h2>
+    <div class="da-why-cards">
+      @for (w of appWhyChoose; track w.title) {
+        <div class="da-why-card">
+          <div class="da-why-icon" [style.background]="w.iconBg">{{ w.icon }}</div>
+          <div class="da-why-card-title">{{ w.title }}</div>
+          <div class="da-why-card-desc">{{ w.desc }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="da-cta-banner">
+    <div class="da-cta-phone-img">📱</div>
+    <div class="da-cta-text">
+      <div class="da-cta-title">Your Success is Just a Tap Away!</div>
+      <div class="da-cta-sub">Join thousands of aspirants who are preparing smarter with the Gyantey Academy App.</div>
+    </div>
+    <button class="da-cta-btn">Download Now ⬇</button>
+  </div>
+
+  <!-- Trust Stats -->
+  <div class="da-trust-section">
+    <div class="da-trust-title">Trusted by 50,000+ Aspirants Across India</div>
+    <div class="da-trust-stats">
+      @for (s of appTrustStats; track s.label) {
+        <div class="da-trust-stat">
+          <span class="da-trust-icon" [style.color]="s.iconColor">{{ s.icon }}</span>
+          <div class="da-trust-count">{{ s.count }}</div>
+          <div class="da-trust-label">{{ s.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
 
 </div>
 }

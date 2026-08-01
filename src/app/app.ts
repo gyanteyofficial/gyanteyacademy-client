@@ -308,6 +308,28 @@ export class App {
 
   setFrSidebar(s: string) { this.activeFrSidebar.set(s); }
 
+  // Download App page data
+  appFeatures = [
+    { icon: '▶', iconBg: '#fff0e8', iconColor: '#f97316', title: 'Learn on the Go', desc: 'Access all content anytime, anywhere' },
+    { icon: '⬇', iconBg: '#e8f5e9', iconColor: '#16a34a', title: 'Download & Study', desc: 'Download lectures & PDFs for offline learning' },
+    { icon: '🔔', iconBg: '#f0f0ff', iconColor: '#7c3aed', title: 'Stay Updated', desc: 'Get instant updates on courses & exams' },
+    { icon: '🛡', iconBg: '#fff8e1', iconColor: '#f59e0b', title: 'Secure & Reliable', desc: 'Safe login and smooth learning experience' },
+  ];
+
+  appWhyChoose = [
+    { icon: '📱', iconBg: '#f0f4ff', title: 'User Friendly', desc: 'Intuitive design for seamless learning' },
+    { icon: '⚡', iconBg: '#fffbeb', title: 'Fast & Lightweight', desc: 'Optimized performance for smooth experience' },
+    { icon: '☁', iconBg: '#eff6ff', title: 'Offline Access', desc: 'Download and study without internet' },
+    { icon: '🔄', iconBg: '#f0fdf4', title: 'Regular Updates', desc: 'New content & features added regularly' },
+  ];
+
+  appTrustStats = [
+    { icon: '⬇', iconColor: '#3b82f6', count: '50K+', label: 'Downloads' },
+    { icon: '▶', iconColor: '#10b981', count: '4.8★', label: 'Ratings on Play Store' },
+    { icon: '🍎', iconColor: '#666', count: '4.7★', label: 'Ratings on App Store' },
+    { icon: '👥', iconColor: '#f97316', count: '50K+', label: 'Happy Users' },
+  ];
+
   // About Us page data
   aboutHeroChecks = [
     'Quality Study Material',
