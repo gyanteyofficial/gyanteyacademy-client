@@ -5,7 +5,7 @@
   <div class="top-links">
     <a href="#" (click)="navigate('download-app',$event)"><span class="icon">📱</span> Download App</a>
     <a href="#"><span class="icon">👤</span> Student Login</a>
-    <a href="#"><span class="icon">🎓</span> Teacher Login</a>
+    <a href="#" (click)="navigate('teacher-login',$event)"><span class="icon">🎓</span> Teacher Login</a>
   </div>
 </div>
 
@@ -1551,6 +1551,171 @@
       }
     </div>
   </div>
+
+</div>
+}
+
+<!-- ===== TEACHER LOGIN PAGE ===== -->
+@if (currentPage() === 'teacher-login') {
+<div class="tl-page">
+
+  <!-- Main Content -->
+  <div class="tl-main">
+
+    <!-- Left Panel -->
+    <div class="tl-left-panel">
+      <h1 class="tl-welcome-heading">Welcome Back, Teacher!</h1>
+      <p class="tl-welcome-sub">Login to your account and continue<br>to inspire and empower learners.</p>
+
+      <div class="tl-features">
+        <div class="tl-feature-item">
+          <div class="tl-feature-icon" style="background:#dbeafe">🖥</div>
+          <div>
+            <div class="tl-feature-title">Manage Your Courses</div>
+            <div class="tl-feature-desc">Create, update and manage your courses and content.</div>
+          </div>
+        </div>
+        <div class="tl-feature-item">
+          <div class="tl-feature-icon" style="background:#dcfce7">📊</div>
+          <div>
+            <div class="tl-feature-title">Track Student Performance</div>
+            <div class="tl-feature-desc">Monitor student progress, analytics and exam results.</div>
+          </div>
+        </div>
+        <div class="tl-feature-item">
+          <div class="tl-feature-icon" style="background:#fef3c7">📝</div>
+          <div>
+            <div class="tl-feature-title">Create &amp; Evaluate Tests</div>
+            <div class="tl-feature-desc">Create mock tests, assignments and evaluate performance.</div>
+          </div>
+        </div>
+        <div class="tl-feature-item">
+          <div class="tl-feature-icon" style="background:#fee2e2">💬</div>
+          <div>
+            <div class="tl-feature-title">Engage with Students</div>
+            <div class="tl-feature-desc">Communicate, guide and support students in their learning journey.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teacher Image + Quote -->
+      <div class="tl-image-area">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=260&h=320&fit=crop&crop=faces" alt="Teacher" class="tl-teacher-img" />
+        <div class="tl-quote-card">
+          <div class="tl-quote-mark">"</div>
+          <p class="tl-quote-text">Teaching is not just a profession,<br>it's the passion to make a difference.</p>
+          <p class="tl-quote-attr">– Be the guide. Inspire greatness.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel — Login Form -->
+    <div class="tl-right-panel">
+      <div class="tl-form-card">
+        <div class="tl-form-icon">🎓</div>
+        <h2 class="tl-form-title">Teacher Login</h2>
+        <p class="tl-form-sub">Sign in to your teacher account</p>
+
+        <div class="tl-field">
+          <label class="tl-label">Email ID</label>
+          <div class="tl-input-wrap">
+            <span class="tl-input-icon">✉</span>
+            <input type="email" class="tl-input" placeholder="Enter your email address" />
+          </div>
+        </div>
+
+        <div class="tl-field">
+          <div class="tl-label-row">
+            <label class="tl-label">Password</label>
+            <a href="#" class="tl-forgot">Forgot Password?</a>
+          </div>
+          <div class="tl-input-wrap">
+            <span class="tl-input-icon">🔒</span>
+            <input type="password" class="tl-input" placeholder="Enter your password" />
+            <span class="tl-input-icon-right">👁</span>
+          </div>
+        </div>
+
+        <div class="tl-remember-row">
+          <label class="tl-remember-label">
+            <input type="checkbox" class="tl-checkbox" checked /> Remember me
+          </label>
+          <span class="tl-need-help">Need help? <a href="#" class="tl-support-link">Contact Support</a></span>
+        </div>
+
+        <button class="tl-login-btn">🎓 Login as Teacher</button>
+
+        <div class="tl-or-divider"><span>or</span></div>
+
+        <button class="tl-google-btn">
+          <span class="tl-google-icon">G</span> Login with Google
+        </button>
+
+        <p class="tl-no-account">Don't have a teacher account? <a href="#" class="tl-apply-link">Apply as Teacher</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Strip -->
+  <div class="tl-trust-strip">
+    <div class="tl-trust-item">
+      <div class="tl-trust-icon" style="color:#7c3aed;background:#ede9fe">🛡</div>
+      <div>
+        <div class="tl-trust-title">Secure &amp; Safe</div>
+        <div class="tl-trust-desc">Your data is protected with top security</div>
+      </div>
+    </div>
+    <div class="tl-trust-item">
+      <div class="tl-trust-icon" style="color:#16a34a;background:#dcfce7">✅</div>
+      <div>
+        <div class="tl-trust-title">Trusted by Teachers</div>
+        <div class="tl-trust-desc">Join thousands of educators across India</div>
+      </div>
+    </div>
+    <div class="tl-trust-item">
+      <div class="tl-trust-icon" style="color:#f97316;background:#fff3e8">❤</div>
+      <div>
+        <div class="tl-trust-title">Made for Educators</div>
+        <div class="tl-trust-desc">Powerful tools to teach and inspire</div>
+      </div>
+    </div>
+    <div class="tl-trust-item">
+      <div class="tl-trust-icon" style="color:#3b82f6;background:#dbeafe">🎧</div>
+      <div>
+        <div class="tl-trust-title">24/7 Support</div>
+        <div class="tl-trust-desc">We're here to help you anytime, anywhere</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini Footer -->
+  <footer class="tl-footer">
+    <div class="tl-footer-inner">
+      <div class="tl-footer-brand">
+        <span class="tl-footer-logo">🎓</span>
+        <div>
+          <div class="tl-footer-brand-name">Gyantey <span class="tl-orange">Academy</span></div>
+          <div class="tl-footer-brand-tag">Empowering Aspirants</div>
+        </div>
+      </div>
+      <div class="tl-footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Help Center</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="tl-footer-social">
+        <span class="tl-footer-follow">Follow Us</span>
+        <a href="#" class="tl-social-btn">▶</a>
+        <a href="#" class="tl-social-btn">f</a>
+        <a href="#" class="tl-social-btn">📷</a>
+        <a href="#" class="tl-social-btn">✈</a>
+        <a href="#" class="tl-social-btn">in</a>
+      </div>
+    </div>
+    <div class="tl-footer-copy">© 2024 Gyantey Academy. All Rights Reserved.</div>
+  </footer>
 
 </div>
 }
