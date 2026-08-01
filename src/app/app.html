@@ -4,7 +4,7 @@
   <span>New Year Offer! Get up to <strong>60% OFF</strong> on All Courses. Limited Time Only!</span>
   <div class="top-links">
     <a href="#" (click)="navigate('download-app',$event)"><span class="icon">📱</span> Download App</a>
-    <a href="#"><span class="icon">👤</span> Student Login</a>
+    <a href="#" (click)="navigate('student-login',$event)"><span class="icon">👤</span> Student Login</a>
     <a href="#" (click)="navigate('teacher-login',$event)"><span class="icon">🎓</span> Teacher Login</a>
   </div>
 </div>
@@ -1715,6 +1715,190 @@
       </div>
     </div>
     <div class="tl-footer-copy">© 2024 Gyantey Academy. All Rights Reserved.</div>
+  </footer>
+
+</div>
+}
+
+<!-- ===== STUDENT LOGIN PAGE ===== -->
+@if (currentPage() === 'student-login') {
+<div class="sl-page">
+
+  <!-- Main two-column -->
+  <div class="sl-main">
+
+    <!-- Left Panel -->
+    <div class="sl-left-panel">
+      <!-- Floating decoration -->
+      <span class="sl-deco sl-deco-cap">🎓</span>
+      <span class="sl-deco sl-deco-bulb">💡</span>
+
+      <h1 class="sl-welcome-heading">Welcome Back,<br><span class="sl-blue">Future Achiever!</span></h1>
+      <div class="sl-heading-line"></div>
+      <p class="sl-welcome-sub">Login to access your personalized dashboard, continue learning, attempt mock tests and achieve your goals.</p>
+
+      <div class="sl-features">
+        <div class="sl-feature-item">
+          <div class="sl-feature-icon" style="background:#3b82f6">📖</div>
+          <div>
+            <div class="sl-feature-title">Learn Without Limits</div>
+            <div class="sl-feature-desc">Access unlimited study materials anytime, anywhere.</div>
+          </div>
+        </div>
+        <div class="sl-feature-item">
+          <div class="sl-feature-icon" style="background:#10b981">🎯</div>
+          <div>
+            <div class="sl-feature-title">Practice &amp; Improve</div>
+            <div class="sl-feature-desc">Attempt mock tests and quizzes to track your performance.</div>
+          </div>
+        </div>
+        <div class="sl-feature-item">
+          <div class="sl-feature-icon" style="background:#f59e0b">📊</div>
+          <div>
+            <div class="sl-feature-title">Track Your Progress</div>
+            <div class="sl-feature-desc">Monitor your performance and identify your strengths.</div>
+          </div>
+        </div>
+        <div class="sl-feature-item">
+          <div class="sl-feature-icon" style="background:#7c3aed">🏆</div>
+          <div>
+            <div class="sl-feature-title">Achieve Your Goals</div>
+            <div class="sl-feature-desc">Stay motivated and keep moving towards your dreams.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Image -->
+      <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=320&h=260&fit=crop&crop=faces,center" alt="Student" class="sl-student-img" />
+
+      <!-- Trusted by stats -->
+      <div class="sl-trust-box">
+        <div class="sl-trust-box-title">Trusted by 50,000+ Students</div>
+        <div class="sl-trust-stats">
+          <div class="sl-ts-item">
+            <span style="color:#3b82f6;font-size:18px">👥</span>
+            <div><div class="sl-ts-count">50K+</div><div class="sl-ts-label">Happy Students</div></div>
+          </div>
+          <div class="sl-ts-item">
+            <span style="color:#10b981;font-size:18px">📚</span>
+            <div><div class="sl-ts-count">500+</div><div class="sl-ts-label">Study Resources</div></div>
+          </div>
+          <div class="sl-ts-item">
+            <span style="color:#f97316;font-size:18px">📋</span>
+            <div><div class="sl-ts-count">10K+</div><div class="sl-ts-label">Mock Tests Attempted</div></div>
+          </div>
+          <div class="sl-ts-item">
+            <span style="color:#f59e0b;font-size:18px">⭐</span>
+            <div><div class="sl-ts-count">4.8/5</div><div class="sl-ts-label">Average Rating</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel — Login Form -->
+    <div class="sl-right-panel">
+      <div class="sl-form-card">
+        <div class="sl-form-icon">👤</div>
+        <h2 class="sl-form-title">Student Login</h2>
+        <p class="sl-form-sub">Login to your account and continue learning</p>
+
+        <div class="sl-field">
+          <label class="sl-label">Email ID / Mobile Number</label>
+          <div class="sl-input-wrap">
+            <span class="sl-input-icon">✉</span>
+            <input type="text" class="sl-input" placeholder="Enter your email or mobile number" />
+          </div>
+        </div>
+
+        <div class="sl-field">
+          <div class="sl-label-row">
+            <label class="sl-label">Password</label>
+            <a href="#" class="sl-forgot">Forgot Password?</a>
+          </div>
+          <div class="sl-input-wrap">
+            <span class="sl-input-icon">🔒</span>
+            <input type="password" class="sl-input" placeholder="Enter your password" />
+            <span class="sl-input-eye">👁</span>
+          </div>
+        </div>
+
+        <label class="sl-remember-label">
+          <input type="checkbox" class="sl-checkbox" checked /> Remember me
+        </label>
+
+        <button class="sl-login-btn">👤 Login as Student</button>
+
+        <div class="sl-or-divider"><span>or</span></div>
+
+        <button class="sl-google-btn">
+          <span class="sl-google-icon">G</span> Login with Google
+        </button>
+
+        <p class="sl-no-account">Don't have an account? <a href="#" class="sl-register-link">Register Now</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="sl-footer">
+    <div class="sl-footer-top">
+      <div class="sl-footer-brand">
+        <div class="sl-footer-logo-row">
+          <span class="sl-footer-logo-icon">🎓</span>
+          <div>
+            <div class="sl-footer-brand-name">Gyantey <span class="sl-orange">Academy</span></div>
+            <div class="sl-footer-brand-tag">Empowering Aspirants</div>
+          </div>
+        </div>
+        <p class="sl-footer-brand-desc">India's most trusted platform for exam preparation.</p>
+        <p class="sl-footer-brand-tagline">Learn. Practice. Succeed.</p>
+      </div>
+
+      <div class="sl-footer-col">
+        <div class="sl-footer-col-title">Quick Links</div>
+        <ul class="sl-footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Mock Tests</a></li>
+          <li><a href="#">Current Affairs</a></li>
+        </ul>
+      </div>
+
+      <div class="sl-footer-col">
+        <div class="sl-footer-col-title">Resources</div>
+        <ul class="sl-footer-links">
+          <li><a href="#">Study Material</a></li>
+          <li><a href="#">Free Resources</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">Daily Quiz</a></li>
+        </ul>
+      </div>
+
+      <div class="sl-footer-col">
+        <div class="sl-footer-col-title">Support</div>
+        <ul class="sl-footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="sl-footer-col">
+        <div class="sl-footer-col-title">Connect With Us</div>
+        <div class="sl-social-row">
+          <a href="#" class="sl-social-circle sl-yt">▶</a>
+          <a href="#" class="sl-social-circle sl-fb">f</a>
+          <a href="#" class="sl-social-circle sl-ig">📷</a>
+          <a href="#" class="sl-social-circle sl-tg">✈</a>
+          <a href="#" class="sl-social-circle sl-tw">𝕏</a>
+        </div>
+      </div>
+    </div>
+    <div class="sl-footer-bottom">
+      <span>© 2024 Gyantey Academy. All Rights Reserved.</span>
+      <span>Made with ❤️ for Aspirants</span>
+    </div>
   </footer>
 
 </div>
