@@ -27,7 +27,7 @@
         <a href="#" [class.active]="showCoursesDropdown()">Courses <span class="arrow" [class.arrow-up]="showCoursesDropdown()">▾</span></a>
       </li>
       <li><a href="#" [class.active]="currentPage()==='mock-tests'" (click)="navigate('mock-tests',$event)">Mock Tests</a></li>
-      <li><a href="#">Current Affairs</a></li>
+      <li><a href="#" [class.active]="currentPage()==='current-affairs'" (click)="navigate('current-affairs',$event)">Current Affairs</a></li>
       <li><a href="#">Study Material <span class="arrow">▾</span></a></li>
       <li><a href="#">Free Resources <span class="arrow">▾</span></a></li>
       <li><a href="#">About Us</a></li>
@@ -707,6 +707,166 @@
 
     </aside>
   </div>
+</div>
+}
+
+<!-- ===== CURRENT AFFAIRS PAGE ===== -->
+@if (currentPage() === 'current-affairs') {
+<div class="ca-page">
+
+  <!-- Left Sidebar -->
+  <aside class="ca-sidebar">
+    <div class="ca-sidebar-header">
+      <span class="ca-sidebar-icon">📅</span>
+      <span>Current Affairs</span>
+    </div>
+    <ul class="ca-sidebar-nav">
+      @for (item of caSidebarItems; track item.name) {
+        <li class="ca-sidebar-item" [class.active]="activeCaSidebar() === item.name" (click)="setCaSidebar(item.name)">
+          <span class="ca-sidebar-item-icon">{{ item.icon }}</span>
+          <span>{{ item.name }}</span>
+        </li>
+      }
+    </ul>
+
+    <div class="ca-filter-section">
+      <div class="ca-filter-title">Filter by Category</div>
+      @for (cat of caCategoryFilters; track cat.name) {
+        <label class="ca-filter-row">
+          <span class="ca-filter-label">{{ cat.name }}</span>
+          <input type="checkbox" class="ca-checkbox" />
+        </label>
+      }
+      <a href="#" class="ca-clear-all">Clear All</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="ca-main">
+    <h2 class="ca-main-title">Current Affairs Today</h2>
+    <div class="ca-date-row">
+      <span class="ca-date-icon">📅</span>
+      <span class="ca-date-text">31 May 2024</span>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="ca-filter-tabs">
+      @for (tab of caFilterTabs; track tab) {
+        <button class="ca-tab" [class.active]="activeCaFilter() === tab" (click)="setCaFilter(tab)">{{ tab }}</button>
+      }
+      <button class="ca-tab ca-tab-more">More ▾</button>
+    </div>
+
+    <!-- Articles -->
+    <div class="ca-articles">
+      @for (article of caArticles; track article.title) {
+        <div class="ca-article-card">
+          <img [src]="article.img" [alt]="article.title" class="ca-article-img" />
+          <div class="ca-article-body">
+            <span class="ca-article-tag" [style.background]="article.tagColor + '1a'" [style.color]="article.tagColor" [style.border]="'1px solid ' + article.tagColor + '44'">{{ article.tag }}</span>
+            <h3 class="ca-article-title">{{ article.title }}</h3>
+            <p class="ca-article-desc">{{ article.desc }}</p>
+            <div class="ca-article-meta">
+              <span class="ca-meta-icon">📅</span>
+              <span>{{ article.date }}</span>
+              <span class="ca-meta-sep">·</span>
+              <span class="ca-meta-icon">🕐</span>
+              <span>{{ article.readTime }}</span>
+            </div>
+          </div>
+          <button class="ca-bookmark-btn">🔖</button>
+        </div>
+      }
+    </div>
+
+    <button class="ca-load-more">Load More ▾</button>
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="ca-right-sidebar">
+
+    <!-- Daily Quiz Card -->
+    <div class="ca-quiz-card">
+      <div class="ca-quiz-left">
+        <span class="ca-quiz-icon">📋</span>
+      </div>
+      <div class="ca-quiz-body">
+        <div class="ca-quiz-title">Daily Quiz</div>
+        <div class="ca-quiz-desc">Test your current affairs knowledge with daily quiz.</div>
+        <button class="ca-quiz-btn">Start Quiz Now</button>
+      </div>
+    </div>
+
+    <!-- Current Affairs Capsule -->
+    <div class="ca-right-card">
+      <div class="ca-right-card-header">
+        <span class="ca-right-card-title">Current Affairs Capsule</span>
+        <a href="#" class="ca-view-all">View All ›</a>
+      </div>
+      <div class="ca-capsule-item">
+        <div class="ca-capsule-icon purple">📄</div>
+        <div class="ca-capsule-info">
+          <div class="ca-capsule-name">May 2024 Capsule</div>
+          <div class="ca-capsule-sub">All important events &amp; news of May 2024</div>
+        </div>
+        <span class="ca-pdf-icon">📕</span>
+      </div>
+      <div class="ca-capsule-item">
+        <div class="ca-capsule-icon violet">📄</div>
+        <div class="ca-capsule-info">
+          <div class="ca-capsule-name">April 2024 Capsule</div>
+          <div class="ca-capsule-sub">All important events &amp; news of April 2024</div>
+        </div>
+        <span class="ca-pdf-icon">📕</span>
+      </div>
+    </div>
+
+    <!-- Trending Topics -->
+    <div class="ca-right-card">
+      <div class="ca-right-card-header">
+        <span class="ca-right-card-title">Trending Topics</span>
+        <a href="#" class="ca-view-all">View All ›</a>
+      </div>
+      @for (topic of caTrendingTopics; track topic.num) {
+        <div class="ca-trending-row">
+          <span class="ca-trending-num">{{ topic.num }}</span>
+          <span class="ca-trending-name">{{ topic.name }}</span>
+          <span class="ca-trending-arrow">↗</span>
+        </div>
+      }
+    </div>
+
+    <!-- Important Days -->
+    <div class="ca-right-card">
+      <div class="ca-right-card-header">
+        <span class="ca-right-card-title">Important Days</span>
+        <a href="#" class="ca-view-all">View Calendar ›</a>
+      </div>
+      <div class="ca-imp-day-row">
+        <div class="ca-imp-date-box">
+          <div class="ca-imp-date-num">05</div>
+          <div class="ca-imp-date-month">Jun</div>
+        </div>
+        <div class="ca-imp-day-info">
+          <div class="ca-imp-day-name">World Environment Day</div>
+          <div class="ca-imp-day-sub">Save nature, save future.</div>
+        </div>
+        <button class="ca-bookmark-btn">🔖</button>
+      </div>
+      <button class="ca-view-all-imp-btn">View All Important Days</button>
+    </div>
+
+    <!-- Stay Updated -->
+    <div class="ca-stay-card">
+      <div class="ca-stay-title">Stay Updated Daily!</div>
+      <div class="ca-stay-desc">Get important current affairs updates straight to your email.</div>
+      <div class="ca-stay-form">
+        <input type="email" class="ca-stay-input" placeholder="Enter your email" />
+        <button class="ca-stay-btn">✈</button>
+      </div>
+    </div>
+
+  </aside>
 </div>
 }
 

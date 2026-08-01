@@ -12,6 +12,8 @@ export class App {
   showCoursesDropdown = signal(false);
   currentPage = signal('home');
   activeTestFilter = signal('All');
+  activeCaFilter = signal('All');
+  activeCaSidebar = signal('Today');
 
   examCategories = [
     { icon: '🏛', name: 'SSC', active: true },
@@ -88,6 +90,79 @@ export class App {
     { rank: 2, medal: '🥈', name: 'Priya Singh', score: '196/200', percentile: 99.5 },
     { rank: 3, medal: '🥉', name: 'Amit Verma', score: '194/200', percentile: 99.2 },
   ];
+
+  // Current Affairs page data
+  caSidebarItems = [
+    { icon: '📅', name: 'Today' },
+    { icon: '📆', name: 'This Week' },
+    { icon: '🗓', name: 'This Month' },
+    { icon: '📦', name: 'Monthly Capsule' },
+    { icon: '📦', name: 'Yearly Capsule' },
+    { icon: '📰', name: 'News in Shorts' },
+    { icon: '✏️', name: 'Editorial Analysis' },
+    { icon: '❓', name: 'Quiz' },
+    { icon: '📊', name: 'Infographics' },
+    { icon: '⭐', name: 'Important Days' },
+    { icon: '🏛', name: 'Government Schemes' },
+  ];
+
+  caFilterTabs = ['All', 'National', 'International', 'Economy', 'Sports', 'Science & Tech'];
+
+  caCategoryFilters = [
+    { name: 'National' }, { name: 'International' }, { name: 'Economy' },
+    { name: 'Banking & Finance' }, { name: 'Science & Tech' }, { name: 'Environment' },
+    { name: 'Sports' }, { name: 'Awards & Honors' }, { name: 'Appointments' },
+    { name: 'Reports & Indexes' },
+  ];
+
+  caArticles = [
+    {
+      tag: 'National', tagColor: '#e53e3e',
+      title: 'India and Australia Hold 15th Military Training Exercise \'Austra Hind\'',
+      desc: 'The 15th edition of India-Australia joint military exercise \'Austra Hind\' has been conducted in Perth, Australia.',
+      date: '31 May 2024', readTime: '2 min read',
+      img: 'https://images.unsplash.com/photo-1580130732478-4e339fb33746?w=290&h=170&fit=crop',
+    },
+    {
+      tag: 'International', tagColor: '#38a169',
+      title: 'World No Tobacco Day 2024 Observed Globally on 31 May',
+      desc: 'World No Tobacco Day is observed every year to raise awareness about the harmful effects of tobacco use.',
+      date: '31 May 2024', readTime: '3 min read',
+      img: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=290&h=170&fit=crop',
+    },
+    {
+      tag: 'Economy', tagColor: '#d69e2e',
+      title: 'RBI Keeps Repo Rate Unchanged at 6.50%',
+      desc: 'The Reserve Bank of India kept the repo rate unchanged at 6.50% for the eighth consecutive time.',
+      date: '31 May 2024', readTime: '2 min read',
+      img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=290&h=170&fit=crop',
+    },
+    {
+      tag: 'Sports', tagColor: '#7c3aed',
+      title: 'IPL 2024: KKR Won by 8 Wickets Against SRH',
+      desc: 'Kolkata Knight Riders won the match against Sunrisers Hyderabad by 8 wickets in a thrilling encounter.',
+      date: '30 May 2024', readTime: '2 min read',
+      img: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=290&h=170&fit=crop',
+    },
+    {
+      tag: 'Science & Tech', tagColor: '#2b6cb0',
+      title: 'ISRO Successfully Tests New Generation Rocket Engine',
+      desc: 'ISRO has successfully tested the semi-cryogenic engine that will power the next generation launch vehicles.',
+      date: '30 May 2024', readTime: '3 min read',
+      img: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=290&h=170&fit=crop',
+    },
+  ];
+
+  caTrendingTopics = [
+    { num: 1, name: 'Lok Sabha Elections 2024' },
+    { num: 2, name: 'India\'s Economic Growth' },
+    { num: 3, name: 'Agniveer Scheme' },
+    { num: 4, name: 'AI & Technology' },
+    { num: 5, name: 'Climate Change' },
+  ];
+
+  setCaFilter(f: string) { this.activeCaFilter.set(f); }
+  setCaSidebar(s: string) { this.activeCaSidebar.set(s); }
 
   // Home page data
   courses = [
