@@ -250,6 +250,64 @@ export class App {
   setSmFilter(f: string) { this.activeSmFilter.set(f); }
   setSmSidebar(s: string) { this.activeSmSidebar.set(s); }
 
+  // Free Resources page data
+  frSidebarItems = [
+    { icon: '🏠', name: 'Overview' },
+    { icon: '📝', name: 'Free Notes' },
+    { icon: '📖', name: 'E-books' },
+    { icon: '❓', name: 'Practice Questions' },
+    { icon: '📄', name: 'Previous Year Papers' },
+    { icon: '📋', name: 'Mock Tests (Free)' },
+    { icon: '🎯', name: 'Daily Quizzes' },
+    { icon: '📰', name: 'Current Affairs PDFs' },
+    { icon: '🗓', name: 'Study Plan' },
+    { icon: '📆', name: 'Exam Calendar' },
+    { icon: '🔗', name: 'Important Links' },
+    { icon: '🏛', name: 'Government Websites' },
+    { icon: '🎓', name: 'Scholarship Updates' },
+    { icon: '⬇️', name: 'Downloads' },
+  ];
+  activeFrSidebar = signal('Overview');
+
+  frStats = [
+    { count: '500+', label: 'Free Notes' },
+    { count: '200+', label: 'E-books' },
+    { count: '5,000+', label: 'Practice Questions' },
+    { count: '300+', label: 'PYQ Papers' },
+    { count: '50+', label: 'Mock Tests' },
+    { count: 'Daily', label: 'Quizzes' },
+  ];
+
+  frCategories = [
+    { icon: '📝', iconBg: '#ede9fe', iconColor: '#7c3aed', name: 'Free Notes', desc: 'Handwritten & prepared notes by toppers and experts', count: '500+ Resources' },
+    { icon: '📖', iconBg: '#dcfce7', iconColor: '#16a34a', name: 'E-books', desc: 'Detailed e-books for complete syllabus preparation', count: '200+ Resources' },
+    { icon: '❓', iconBg: '#fee2e2', iconColor: '#dc2626', name: 'Practice Questions', desc: 'Topic-wise questions to strengthen concepts', count: '5,000+ Questions' },
+    { icon: '📄', iconBg: '#ffedd5', iconColor: '#ea580c', name: 'Previous Year Papers', desc: 'Subject-wise PYQs with solutions', count: '300+ Papers' },
+    { icon: '📋', iconBg: '#ede9fe', iconColor: '#7c3aed', name: 'Mock Tests (Free)', desc: 'Free full length mock tests for all exams', count: '50+ Tests' },
+    { icon: '🎯', iconBg: '#fef9c3', iconColor: '#ca8a04', name: 'Daily Quizzes', desc: 'Attempt daily quizzes and track your progress', count: '100+ Quizzes' },
+    { icon: '📰', iconBg: '#ffedd5', iconColor: '#ea580c', name: 'Current Affairs PDFs', desc: 'Daily, Weekly & Monthly current affairs PDFs', count: '100+ PDFs' },
+    { icon: '🗓', iconBg: '#dcfce7', iconColor: '#16a34a', name: 'Study Plan', desc: 'Expert recommended study plans for all exams', count: '20+ Plans' },
+    { icon: '🔗', iconBg: '#dbeafe', iconColor: '#2563eb', name: 'Important Links', desc: 'Useful links for exam preparation', count: '50+ Links' },
+  ];
+
+  frResources = [
+    { icon: '📕', iconBg: '#fee2e2', title: 'SSC CHSL Tier 1 Notes (All Subjects)', tag: 'Notes', tagColor: '#7c3aed', tagBg: '#ede9fe', lang: 'English', size: '2.6 MB', action: 'download' },
+    { icon: '📗', iconBg: '#dcfce7', title: 'General Awareness eBook 2024', tag: 'E-book', tagColor: '#16a34a', tagBg: '#dcfce7', lang: 'English', size: '12.3 MB', action: 'download' },
+    { icon: '📘', iconBg: '#dbeafe', title: 'SSC CGL Tier 1 Previous Year Papers (2018-2023)', tag: 'PYQ Papers', tagColor: '#2563eb', tagBg: '#dbeafe', lang: 'English', size: '15.8 MB', action: 'download' },
+    { icon: '📙', iconBg: '#fef9c3', title: '1000 Important GK Questions', tag: 'Practice Questions', tagColor: '#ea580c', tagBg: '#ffedd5', lang: 'English', size: '1.8 MB', action: 'download' },
+    { icon: '📋', iconBg: '#ede9fe', title: 'SSC MTS Free Mock Test #1', tag: 'Mock Test', tagColor: '#7c3aed', tagBg: '#ede9fe', lang: 'English', size: '—', action: 'attempt' },
+  ];
+
+  frMostDownloaded = [
+    { num: 1, icon: '📕', iconBg: '#fee2e2', name: 'SSC CGL Tier 1 Notes (All Subjects)', downloads: '12.4K Downloads' },
+    { num: 2, icon: '📘', iconBg: '#dbeafe', name: 'SSC CGL Previous Year Papers (2018-23)', downloads: '9.8K Downloads' },
+    { num: 3, icon: '📗', iconBg: '#dcfce7', name: 'General Awareness eBook 2024', downloads: '8.7K Downloads' },
+    { num: 4, icon: '📙', iconBg: '#fef9c3', name: 'Quant Formula Sheet', downloads: '7.2K Downloads' },
+    { num: 5, icon: '📕', iconBg: '#fee2e2', name: '1000 Important GK Questions', downloads: '6.1K Downloads' },
+  ];
+
+  setFrSidebar(s: string) { this.activeFrSidebar.set(s); }
+
   // Home page data
   courses = [
     { name: 'SSC CGL 2027', subtitle: 'Complete Foundation', color: '#1a3c6e', hours: 320, videos: 600, price: 1999, originalPrice: 4999, badge: '🏅' },

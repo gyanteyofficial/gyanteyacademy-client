@@ -29,7 +29,7 @@
       <li><a href="#" [class.active]="currentPage()==='mock-tests'" (click)="navigate('mock-tests',$event)">Mock Tests</a></li>
       <li><a href="#" [class.active]="currentPage()==='current-affairs'" (click)="navigate('current-affairs',$event)">Current Affairs</a></li>
       <li><a href="#" [class.active]="currentPage()==='study-material'" (click)="navigate('study-material',$event)">Study Material <span class="arrow">▾</span></a></li>
-      <li><a href="#">Free Resources <span class="arrow">▾</span></a></li>
+      <li><a href="#" [class.active]="currentPage()==='free-resources'" (click)="navigate('free-resources',$event)">Free Resources <span class="arrow">▾</span></a></li>
       <li><a href="#">About Us</a></li>
     </ul>
     <div class="nav-actions">
@@ -707,6 +707,159 @@
 
     </aside>
   </div>
+</div>
+}
+
+<!-- ===== FREE RESOURCES PAGE ===== -->
+@if (currentPage() === 'free-resources') {
+<div class="fr-page">
+
+  <!-- Left Sidebar -->
+  <aside class="fr-sidebar">
+    <div class="fr-sidebar-header">
+      <span>🎁</span>
+      <span>Free Resources</span>
+    </div>
+    <ul class="fr-sidebar-nav">
+      @for (item of frSidebarItems; track item.name) {
+        <li class="fr-sidebar-item" [class.active]="activeFrSidebar() === item.name" (click)="setFrSidebar(item.name)">
+          <span class="fr-sidebar-item-icon">{{ item.icon }}</span>
+          <span>{{ item.name }}</span>
+        </li>
+      }
+    </ul>
+
+    <!-- App Card -->
+    <div class="fr-app-card">
+      <div class="fr-app-title">Gyantey Academy App</div>
+      <p class="fr-app-sub">Access all our free resources on the go!</p>
+      <div class="fr-app-phone">📱</div>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="fr-store-img" /></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="fr-store-img" /></a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="fr-main">
+    <h2 class="fr-main-title">Free Resources for Your Success</h2>
+    <p class="fr-main-sub">Explore high-quality resources and boost your exam preparation – Absolutely FREE!</p>
+
+    <!-- Stat Strip -->
+    <div class="fr-stat-strip">
+      @for (s of frStats; track s.label) {
+        <div class="fr-stat-item">
+          <div class="fr-stat-count">{{ s.count }}</div>
+          <div class="fr-stat-label">{{ s.label }}</div>
+        </div>
+      }
+    </div>
+
+    <!-- Browse by Category -->
+    <div class="fr-section-title">Browse by Category</div>
+    <div class="fr-category-grid">
+      @for (cat of frCategories; track cat.name) {
+        <div class="fr-cat-card">
+          <div class="fr-cat-icon-wrap" [style.background]="cat.iconBg">
+            <span [style.color]="cat.iconColor">{{ cat.icon }}</span>
+          </div>
+          <div class="fr-cat-body">
+            <div class="fr-cat-name">{{ cat.name }}</div>
+            <div class="fr-cat-desc">{{ cat.desc }}</div>
+            <div class="fr-cat-count">{{ cat.count }}</div>
+          </div>
+          <span class="fr-cat-arrow">›</span>
+        </div>
+      }
+    </div>
+
+    <!-- Latest Free Resources -->
+    <div class="fr-latest-header">
+      <span class="fr-section-title" style="margin-bottom:0">Latest Free Resources</span>
+      <a href="#" class="fr-view-all-link">View All ›</a>
+    </div>
+    <div class="fr-resources-list">
+      @for (r of frResources; track r.title) {
+        <div class="fr-resource-row">
+          <div class="fr-res-icon-wrap" [style.background]="r.iconBg">
+            <span class="fr-res-icon">{{ r.icon }}</span>
+          </div>
+          <div class="fr-res-body">
+            <div class="fr-res-title">{{ r.title }}</div>
+          </div>
+          <div class="fr-res-tags">
+            <span class="fr-res-tag" [style.background]="r.tagBg" [style.color]="r.tagColor">{{ r.tag }}</span>
+            <span class="fr-res-tag fr-res-tag-lang">{{ r.lang }}</span>
+          </div>
+          <div class="fr-res-size">{{ r.size }}</div>
+          @if (r.action === 'download') {
+            <button class="fr-res-dl-btn"><span>⬇</span> Download</button>
+          } @else {
+            <button class="fr-res-attempt-btn">Attempt Now ✕</button>
+          }
+        </div>
+      }
+    </div>
+
+    <button class="fr-view-more">View More Resources ▾</button>
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="fr-right-sidebar">
+
+    <!-- Today's Free Quiz -->
+    <div class="fr-quiz-card">
+      <div class="fr-quiz-body">
+        <div class="fr-quiz-title">Today's Free Quiz</div>
+        <div class="fr-quiz-desc">Attempt today's quiz and test your preparation level.</div>
+        <button class="fr-quiz-btn">Start Quiz Now</button>
+      </div>
+      <div class="fr-quiz-img">📋✏️</div>
+    </div>
+
+    <!-- Most Downloaded -->
+    <div class="fr-right-card">
+      <div class="fr-right-card-header">
+        <span class="fr-right-card-title">Most Downloaded</span>
+        <a href="#" class="fr-view-all">View All ›</a>
+      </div>
+      @for (item of frMostDownloaded; track item.num) {
+        <div class="fr-dl-row">
+          <span class="fr-dl-num">{{ item.num }}</span>
+          <div class="fr-dl-icon" [style.background]="item.iconBg">{{ item.icon }}</div>
+          <div class="fr-dl-info">
+            <div class="fr-dl-name">{{ item.name }}</div>
+            <div class="fr-dl-count">{{ item.downloads }}</div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Stay Updated -->
+    <div class="fr-right-card fr-stay-card">
+      <div class="fr-stay-header">
+        <div>
+          <div class="fr-right-card-title">Stay Updated</div>
+          <div class="fr-stay-desc">Get the latest free resources straight to your email.</div>
+        </div>
+        <span class="fr-stay-icon">✉️</span>
+      </div>
+      <div class="fr-stay-form">
+        <input type="email" class="fr-stay-input" placeholder="Enter your email" />
+        <button class="fr-stay-btn">Subscribe</button>
+      </div>
+    </div>
+
+    <!-- Join Community -->
+    <div class="fr-community-card">
+      <div class="fr-community-body">
+        <div class="fr-community-title">Join Our Community</div>
+        <div class="fr-community-desc">Join our Telegram channel and get regular updates &amp; free resources.</div>
+        <button class="fr-community-btn">Join Telegram</button>
+      </div>
+      <span class="fr-community-icon">✈️</span>
+    </div>
+
+  </aside>
 </div>
 }
 
