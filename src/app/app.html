@@ -22,11 +22,11 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#" [class.active]="currentPage()==='home'" (click)="navigate('home',$event)">Home</a></li>
       <li class="has-dropdown" (click)="toggleCoursesDropdown($event)">
         <a href="#" [class.active]="showCoursesDropdown()">Courses <span class="arrow" [class.arrow-up]="showCoursesDropdown()">▾</span></a>
       </li>
-      <li><a href="#">Mock Tests</a></li>
+      <li><a href="#" [class.active]="currentPage()==='mock-tests'" (click)="navigate('mock-tests',$event)">Mock Tests</a></li>
       <li><a href="#">Current Affairs</a></li>
       <li><a href="#">Study Material <span class="arrow">▾</span></a></li>
       <li><a href="#">Free Resources <span class="arrow">▾</span></a></li>
@@ -141,6 +141,8 @@
 </div>
 }
 
+<!-- ===== HOME PAGE ===== -->
+@if (currentPage() === 'home') {
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
@@ -459,3 +461,252 @@
     <p>© 2024 Gyantey Academy. All Rights Reserved.</p>
   </div>
 </footer>
+} <!-- end home page -->
+
+<!-- ===== MOCK TESTS PAGE ===== -->
+@if (currentPage() === 'mock-tests') {
+<div class="mt-page">
+  <div class="mt-layout">
+
+    <!-- Left Sidebar -->
+    <aside class="mt-sidebar">
+      <div class="mt-sidebar-title">
+        <span>📋</span> Mock Tests
+      </div>
+      <ul class="mt-sidebar-list">
+        @for (item of mockSidebarItems; track item.name) {
+          <li class="mt-sidebar-item" [class.active]="item.active">
+            <span class="mt-s-icon">{{ item.icon }}</span>
+            <span>{{ item.name }}</span>
+          </li>
+        }
+      </ul>
+      <!-- Pro Card -->
+      <div class="mt-pro-card">
+        <div class="mt-pro-header">
+          <span class="mt-pro-badge">⭐</span>
+          <span class="mt-pro-title">Test Series Pro</span>
+          <span class="mt-pro-trophy">🏆</span>
+        </div>
+        <ul class="mt-pro-features">
+          <li>• 100+ Full Length Tests</li>
+          <li>• All India Rankings</li>
+          <li>• Detailed Solutions</li>
+          <li>• Performance Analysis</li>
+        </ul>
+        <button class="mt-pro-btn">Upgrade Now</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mt-main">
+      <div class="mt-main-header">
+        <h1>Mock Tests</h1>
+        <p>Take tests, analyze performance and improve your preparation.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="mt-filters">
+        @for (f of mockTestFilters; track f) {
+          <button class="mt-filter-btn" [class.active]="activeTestFilter()===f" (click)="setTestFilter(f)">{{ f }}</button>
+        }
+        <button class="mt-filter-more">›</button>
+      </div>
+
+      <!-- CTA Banner -->
+      <div class="mt-banner">
+        <div class="mt-banner-left">
+          <h2>Take a Full Length Mock Test</h2>
+          <p>Simulate real exam expromance and boost your score</p>
+          <div class="mt-banner-features">
+            <div class="mt-banner-feat"><span>📄</span><span>Real Exam Pattern</span></div>
+            <div class="mt-banner-feat"><span>📋</span><span>Latest Syllabus</span></div>
+            <div class="mt-banner-feat"><span>⏱</span><span>Instant Results</span></div>
+            <div class="mt-banner-feat"><span>💬</span><span>Detailed Solutions</span></div>
+          </div>
+        </div>
+        <div class="mt-banner-right">
+          <div class="mt-banner-img">📋</div>
+          <button class="mt-banner-btn">Start Test Now</button>
+        </div>
+      </div>
+
+      <!-- Latest Mock Tests -->
+      <div class="mt-section-header">
+        <h3>Latest Mock Tests</h3>
+        <a href="#" class="mt-view-all">View All Tests →</a>
+      </div>
+      <div class="mt-test-list">
+        @for (test of latestMockTests; track test.name) {
+          <div class="mt-test-item">
+            <div class="mt-test-icon" [style.background]="test.color + '20'" [style.color]="test.color">📄</div>
+            <div class="mt-test-info">
+              <div class="mt-test-name">{{ test.name }}</div>
+              <div class="mt-test-type">{{ test.type }}</div>
+              <div class="mt-test-meta">
+                <span>🕐 {{ test.questions }} Questions</span>
+                <span>⏱ {{ test.mins }} Min</span>
+                <span>📊 {{ test.marks }} Marks</span>
+              </div>
+            </div>
+            <div class="mt-test-attempts">
+              <div class="mt-attempts-num">{{ test.attempts | number }}</div>
+              <div class="mt-attempts-label">Attempts</div>
+            </div>
+            <button class="mt-start-btn">Start Test</button>
+          </div>
+        }
+      </div>
+
+      <!-- Test Series -->
+      <div class="mt-section-header" style="margin-top:28px">
+        <h3>Test Series</h3>
+        <a href="#" class="mt-view-all">View All Series →</a>
+      </div>
+      <div class="mt-series-grid">
+        @for (s of testSeriesList; track s.name) {
+          <div class="mt-series-card">
+            <div class="mt-series-name">{{ s.name }}</div>
+            <div class="mt-series-meta">{{ s.tests }} Tests &nbsp;|&nbsp; {{ s.fullLength }} Full Length Tests</div>
+            <div class="mt-series-progress-row">
+              <span class="mt-series-progress-label">Progress</span>
+              <div class="mt-series-bar">
+                <div class="mt-series-fill" [style.width]="s.progress + '%'"></div>
+              </div>
+              <span class="mt-series-pct">{{ s.progress }}%</span>
+            </div>
+            <button class="mt-continue-btn">Continue</button>
+          </div>
+        }
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="mt-right-sidebar">
+
+      <!-- Test Stats -->
+      <div class="mt-stats-card">
+        <div class="mt-stats-header">
+          <span class="mt-stats-title">Your Test Stats</span>
+          <a href="#" class="mt-stats-link">View Detailed Analysis →</a>
+        </div>
+        <div class="mt-stats-body">
+          <div class="mt-donut-wrap">
+            <svg class="mt-donut" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e8ecef" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#3b82f6" stroke-width="8"
+                stroke-dasharray="140 62" stroke-dashoffset="24" stroke-linecap="round"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#f97316" stroke-width="8"
+                stroke-dasharray="52 150" stroke-dashoffset="-116" stroke-linecap="round"/>
+            </svg>
+            <div class="mt-donut-label">
+              <div class="mt-donut-num">78</div>
+              <div class="mt-donut-sub">Tests Attempted</div>
+            </div>
+          </div>
+          <div class="mt-stats-legend">
+            <div class="mt-legend-item">
+              <span class="mt-legend-dot" style="background:#3b82f6"></span>
+              <span class="mt-legend-count">32</span>
+              <span class="mt-legend-label">Full Length Tests</span>
+            </div>
+            <div class="mt-legend-item">
+              <span class="mt-legend-dot" style="background:#f97316"></span>
+              <span class="mt-legend-count">26</span>
+              <span class="mt-legend-label">Sectional Tests</span>
+            </div>
+            <div class="mt-legend-item">
+              <span class="mt-legend-dot" style="background:#10b981"></span>
+              <span class="mt-legend-count">20</span>
+              <span class="mt-legend-label">Previous Year Papers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overall Performance -->
+      <div class="mt-perf-card">
+        <div class="mt-perf-header">
+          <span class="mt-perf-title">Overall Performance</span>
+          <span class="mt-perf-sub">(All Time)</span>
+        </div>
+        <div class="mt-perf-stats">
+          <div class="mt-perf-stat">
+            <div class="mt-perf-val green">72.4%</div>
+            <div class="mt-perf-label">Average Score</div>
+          </div>
+          <div class="mt-perf-stat">
+            <div class="mt-perf-val blue">85.6%</div>
+            <div class="mt-perf-label">Best Score</div>
+          </div>
+          <div class="mt-perf-stat">
+            <div class="mt-perf-val orange">98.7</div>
+            <div class="mt-perf-label">Average Percentile</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Test -->
+      <div class="mt-recent-card">
+        <div class="mt-recent-title">Recent Test</div>
+        <div class="mt-recent-name">SSC CGL Mock Test #15</div>
+        <div class="mt-recent-date">Attempted on 28 May 2024</div>
+        <div class="mt-recent-stats">
+          <div class="mt-recent-stat">
+            <div class="mt-rs-label">Score</div>
+            <div class="mt-rs-val">144/200</div>
+          </div>
+          <div class="mt-recent-stat">
+            <div class="mt-rs-label">Percentile</div>
+            <div class="mt-rs-val">85.2</div>
+          </div>
+          <div class="mt-recent-stat">
+            <div class="mt-rs-label">Accuracy</div>
+            <div class="mt-rs-val">82%</div>
+          </div>
+        </div>
+        <a href="#" class="mt-recent-link">View Detailed Analysis</a>
+      </div>
+
+      <!-- Top Rankers -->
+      <div class="mt-rankers-card">
+        <div class="mt-rankers-header">
+          <span class="mt-rankers-title">Top Rankers</span>
+          <a href="#" class="mt-rankers-link">View Leaderboard →</a>
+        </div>
+        <div class="mt-rankers-table-head">
+          <span>Rank</span><span>Name</span><span>Score</span><span>Percentile</span>
+        </div>
+        @for (r of topRankers; track r.name) {
+          <div class="mt-ranker-row">
+            <span class="mt-ranker-medal">{{ r.medal }}</span>
+            <span class="mt-ranker-name">{{ r.name }}</span>
+            <span class="mt-ranker-score">{{ r.score }}</span>
+            <span class="mt-ranker-pct">{{ r.percentile }}</span>
+          </div>
+        }
+        <a href="#" class="mt-leaderboard-btn">See Full Leaderboard</a>
+      </div>
+
+      <!-- Analyse Weak Topics -->
+      <div class="mt-analyse-card">
+        <div class="mt-analyse-left">
+          <div class="mt-analyse-title">Analyse Your Weak Topics</div>
+          <div class="mt-analyse-desc">Get topic-wise analysis and improve your weak areas</div>
+          <button class="mt-analyse-btn">Start Analysis</button>
+        </div>
+        <div class="mt-analyse-chart">
+          <svg viewBox="0 0 60 60" width="70" height="70">
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#ef4444" stroke-width="12" stroke-dasharray="60 98" stroke-dashoffset="0"/>
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#f97316" stroke-width="12" stroke-dasharray="40 118" stroke-dashoffset="-60"/>
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#fbbf24" stroke-width="12" stroke-dasharray="30 128" stroke-dashoffset="-100"/>
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#e5e7eb" stroke-width="12" stroke-dasharray="28 130" stroke-dashoffset="-130"/>
+          </svg>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+}
+
