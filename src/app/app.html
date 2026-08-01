@@ -30,7 +30,7 @@
       <li><a href="#" [class.active]="currentPage()==='current-affairs'" (click)="navigate('current-affairs',$event)">Current Affairs</a></li>
       <li><a href="#" [class.active]="currentPage()==='study-material'" (click)="navigate('study-material',$event)">Study Material <span class="arrow">▾</span></a></li>
       <li><a href="#" [class.active]="currentPage()==='free-resources'" (click)="navigate('free-resources',$event)">Free Resources <span class="arrow">▾</span></a></li>
-      <li><a href="#">About Us</a></li>
+      <li><a href="#" [class.active]="currentPage()==='about-us'" (click)="navigate('about-us',$event)">About Us</a></li>
     </ul>
     <div class="nav-actions">
       <button class="search-btn">🔍</button>
@@ -1193,3 +1193,203 @@
 </div>
 }
 
+
+<!-- ===== ABOUT US PAGE ===== -->
+@if (currentPage() === 'about-us') {
+<div class="au-page">
+
+  <!-- Hero Section -->
+  <section class="au-hero">
+    <div class="au-hero-left">
+      <div class="au-hero-label">ABOUT GYANTEY ACADEMY</div>
+      <h1 class="au-hero-heading">Empowering Aspirants.<br>Building <span class="au-orange">Better Tomorrows.</span></h1>
+      <p class="au-hero-desc">Gyantey Academy is an online learning platform dedicated to helping aspirants crack competitive exams with confidence. We provide quality study materials, mock tests, current affairs and expert guidance to help you achieve your dreams.</p>
+      <div class="au-hero-btns">
+        <a href="#" class="au-btn-primary">Explore Courses &nbsp;→</a>
+        <a href="#" class="au-btn-secondary">👥 Join Our Community</a>
+      </div>
+    </div>
+    <div class="au-hero-right">
+      <div class="au-hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=480&h=300&fit=crop" alt="Students studying" class="au-hero-img" />
+        <div class="au-hero-overlay-card">
+          @for (item of aboutHeroChecks; track item) {
+            <div class="au-check-row"><span class="au-check-dot">✅</span><span>{{ item }}</span></div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="au-stats-strip">
+    @for (s of aboutStats; track s.label) {
+      <div class="au-stat-item">
+        <span class="au-stat-icon" [style.color]="s.color">{{ s.icon }}</span>
+        <div>
+          <div class="au-stat-count" [style.color]="s.color">{{ s.count }}</div>
+          <div class="au-stat-label">{{ s.label }}</div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="au-features-strip">
+    @for (f of aboutFeatures; track f.title) {
+      <div class="au-feature-card">
+        <div class="au-feature-icon-wrap" [style.background]="f.iconBg"><span class="au-feature-icon">{{ f.icon }}</span></div>
+        <div class="au-feature-title">{{ f.title }}</div>
+        <div class="au-feature-desc">{{ f.desc }}</div>
+      </div>
+    }
+  </div>
+
+  <!-- Our Story / Mission / Vision -->
+  <div class="au-smv-section">
+    <div class="au-story-col">
+      <h2 class="au-smv-heading">Our Story</h2>
+      <div class="au-section-underline"></div>
+      <p class="au-story-text">Gyantey Academy was founded with a vision to make quality education accessible to every aspirant, no matter where they come from.</p>
+      <p class="au-story-text">What started as a small initiative has grown into a trusted platform helping thousands of students prepare for competitive exams with confidence.</p>
+      <p class="au-story-text">We believe in consistent learning, smart preparation, and a strong mindset. Together, we build a future filled with possibilities.</p>
+      <a href="#" class="au-read-more">Read Our Complete Story →</a>
+    </div>
+    <div class="au-mv-col">
+      <div class="au-mv-card">
+        <div class="au-mv-icon">🚀</div>
+        <div>
+          <div class="au-mv-title">Our Mission</div>
+          <div class="au-mv-desc">To empower aspirants with the right resources, guidance and support to achieve their goals and build a better tomorrow.</div>
+        </div>
+      </div>
+      <div class="au-mv-card">
+        <div class="au-mv-icon">👁</div>
+        <div>
+          <div class="au-mv-title">Our Vision</div>
+          <div class="au-mv-desc">To become India's most trusted and result-oriented learning platform for competitive exam preparation.</div>
+        </div>
+      </div>
+    </div>
+    <div class="au-mission-stats">
+      @for (s of aboutMissionStats; track s.label) {
+        <div class="au-ms-item">
+          <div class="au-ms-icon" [style.color]="s.color">{{ s.icon }}</div>
+          <div class="au-ms-count" [style.color]="s.color">{{ s.count }}</div>
+          <div class="au-ms-label">{{ s.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Our Team -->
+  <div class="au-team-section">
+    <div class="au-team-main">
+      <h2 class="au-smv-heading">Our Team</h2>
+      <p class="au-team-sub">A passionate team of educators, content creators and tech experts working together for your success.</p>
+      <div class="au-team-cards">
+        @for (m of teamMembers; track m.name) {
+          <div class="au-team-card">
+            <img [src]="m.img" [alt]="m.name" class="au-team-img" />
+            <div class="au-team-name">{{ m.name }}</div>
+            <div class="au-team-role">{{ m.role }}</div>
+            <div class="au-team-socials">
+              <a href="#" class="au-social-icon au-si-li">in</a>
+              <a href="#" class="au-social-icon au-si-tw">𝕏</a>
+              <a href="#" class="au-social-icon au-si-em">✉</a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="au-community-card">
+      <div class="au-community-title">Join Our Community</div>
+      <div class="au-community-desc">Connect with thousands of aspirants across the country. Share, learn and grow together.</div>
+      <button class="au-community-btn">👥 Join Our Community</button>
+      <div class="au-community-avatars">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=faces" class="au-avatar" alt="" />
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=32&h=32&fit=crop&crop=faces" class="au-avatar" alt="" />
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=faces" class="au-avatar" alt="" />
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=faces" class="au-avatar" alt="" />
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=faces" class="au-avatar" alt="" />
+        <span class="au-community-count">10K+ Aspirants already joined</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Media Strip -->
+  <div class="au-social-strip">
+    <div class="au-social-left">
+      <h3 class="au-social-title">Follow Us On Social Media</h3>
+      <p class="au-social-sub">Stay updated with the latest updates, tips, motivation and more!</p>
+    </div>
+    <div class="au-social-channels">
+      @for (s of socialChannels; track s.label) {
+        <a href="#" class="au-channel-item" [style.background]="s.bg">
+          <div class="au-channel-icon" [style.color]="s.color">{{ s.icon }}</div>
+          <div class="au-channel-name" [style.color]="s.color">{{ s.name }}</div>
+        </a>
+      }
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="au-footer">
+    <div class="au-footer-top">
+      <div class="au-footer-brand">
+        <div class="au-footer-logo-row">
+          <span class="au-footer-logo-icon">🎓</span>
+          <div>
+            <div class="au-footer-logo-name">Gyantey <span class="au-orange">Academy</span></div>
+            <div class="au-footer-logo-tag">Empowering Aspirants</div>
+          </div>
+        </div>
+        <p class="au-footer-brand-desc">We are committed to providing the best resources and guidance to help aspirants achieve their dreams and build a better tomorrow.</p>
+        <div class="au-footer-stores">
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="au-store-img" /></a>
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="au-store-img" /></a>
+        </div>
+      </div>
+      <div class="au-footer-col">
+        <div class="au-footer-col-title">Quick Links</div>
+        <ul class="au-footer-links">
+          <li><a href="#">Home</a></li><li><a href="#">Courses</a></li><li><a href="#">Mock Tests</a></li>
+          <li><a href="#">Current Affairs</a></li><li><a href="#">Study Material</a></li>
+          <li><a href="#">Free Resources</a></li><li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+      <div class="au-footer-col">
+        <div class="au-footer-col-title">Resources</div>
+        <ul class="au-footer-links">
+          <li><a href="#">Notes</a></li><li><a href="#">E-books</a></li>
+          <li><a href="#">Practice Questions</a></li><li><a href="#">Previous Year Papers</a></li>
+          <li><a href="#">Daily Quizzes</a></li><li><a href="#">Exam Calendar</a></li>
+          <li><a href="#">Scholarship Updates</a></li>
+        </ul>
+      </div>
+      <div class="au-footer-col">
+        <div class="au-footer-col-title">Support</div>
+        <ul class="au-footer-links">
+          <li><a href="#">📋 Help Center</a></li><li><a href="#">📞 Contact Us</a></li>
+          <li><a href="#">🔒 Privacy Policy</a></li><li><a href="#">📄 Terms &amp; Conditions</a></li>
+          <li><a href="#">💳 Refund Policy</a></li><li><a href="#">💼 Careers</a></li>
+        </ul>
+      </div>
+      <div class="au-footer-col">
+        <div class="au-footer-col-title">Contact Us</div>
+        <ul class="au-footer-links au-contact-list">
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ support&#64;gyanteyacademy.com</li>
+          <li>📍 India</li>
+          <li>🕐 Mon - Sat: 9:00 AM - 7:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="au-footer-bottom">
+      <span>© 2024 Gyantey Academy. All Rights Reserved.</span>
+      <span>Made with ❤️ for Aspirants</span>
+    </div>
+  </footer>
+
+</div>
+}

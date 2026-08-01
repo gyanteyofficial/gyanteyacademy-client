@@ -308,6 +308,55 @@ export class App {
 
   setFrSidebar(s: string) { this.activeFrSidebar.set(s); }
 
+  // About Us page data
+  aboutHeroChecks = [
+    'Quality Study Material',
+    'Expert Guidance',
+    'Mock Tests & Analysis',
+    'Current Affairs Updates',
+    'Aspirants Community',
+  ];
+
+  aboutStats = [
+    { icon: '👥', count: '50,000+', label: 'Happy Students', color: '#f97316' },
+    { icon: '📚', count: '500+', label: 'Study Resources', color: '#10b981' },
+    { icon: '🏆', count: '10,000+', label: 'Mock Tests Attempted', color: '#7c3aed' },
+    { icon: '⭐', count: '1000+', label: 'Success Stories', color: '#f59e0b' },
+    { icon: '🏅', count: '4.8/5', label: 'Average Rating', color: '#ef4444' },
+  ];
+
+  aboutFeatures = [
+    { icon: '📖', iconBg: '#fff3e8', title: 'Quality Content', desc: 'Curated and exam-focused study material for better understanding.' },
+    { icon: '🎯', iconBg: '#fff0f0', title: 'Exam Focused', desc: 'Updated resources and mock tests designed to crack real exams.' },
+    { icon: '👥', iconBg: '#f0fff4', title: 'Aspirant Driven', desc: 'A supportive community that motivates and inspires you.' },
+    { icon: '🏆', iconBg: '#fffbeb', title: 'Proven Results', desc: 'Thousands of aspirants have achieved success with us.' },
+    { icon: '⚡', iconBg: '#fef3ff', title: 'Always with You', desc: 'Learn anytime, anywhere on any device with ease.' },
+  ];
+
+  aboutMissionStats = [
+    { icon: '👥', count: '50,000+', label: 'Students Empowered', color: '#f97316' },
+    { icon: '📚', count: '500+', label: 'Study Resources', color: '#10b981' },
+    { icon: '🏆', count: '10,000+', label: 'Mock Tests Attempted', color: '#7c3aed' },
+    { icon: '⭐', count: '1000+', label: 'Success Stories', color: '#f59e0b' },
+  ];
+
+  teamMembers = [
+    { name: 'Amit Sharma', role: 'Founder & CEO', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces' },
+    { name: 'Priya Verma', role: 'Academic Head', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces' },
+    { name: 'Rahul Singh', role: 'Content Lead', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces' },
+    { name: 'Neha Yadav', role: 'Research Head', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=faces' },
+    { name: 'Arjun Mehta', role: 'Tech Lead', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces' },
+  ];
+
+  socialChannels = [
+    { icon: '▶', name: '/gyanteyacademy', color: '#ff0000', bg: '#fff0f0', label: 'YouTube' },
+    { icon: '📷', name: '/gyantey.academy', color: '#e1306c', bg: '#fff0f6', label: 'Instagram' },
+    { icon: 'f', name: '/gyanteyacademy', color: '#1877f2', bg: '#f0f4ff', label: 'Facebook' },
+    { icon: '✈', name: '/gyanteyacademy', color: '#0088cc', bg: '#f0f8ff', label: 'Telegram' },
+    { icon: '𝕏', name: '/gyanteyacademy', color: '#000', bg: '#f5f5f5', label: 'Twitter' },
+    { icon: 'in', name: '/gyanteyacademy', color: '#0077b5', bg: '#f0f6ff', label: 'LinkedIn' },
+  ];
+
   // Home page data
   courses = [
     { name: 'SSC CGL 2027', subtitle: 'Complete Foundation', color: '#1a3c6e', hours: 320, videos: 600, price: 1999, originalPrice: 4999, badge: '🏅' },
