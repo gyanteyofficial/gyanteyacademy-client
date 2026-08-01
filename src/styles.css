@@ -177,6 +177,292 @@ ul { list-style: none; }
 .newsletter-form button:hover { background: #ea6e0a; }
 .footer-bottom { border-top: 1px solid #2d2d4e; padding: 16px 0; text-align: center; font-size: 13px; color: #64748b; max-width: 1200px; margin: 0 auto; }
 
+/* ===== COURSES MEGA DROPDOWN ===== */
+.has-dropdown { position: relative; cursor: pointer; }
+.arrow-up { display: inline-block; transform: rotate(180deg); transition: transform 0.2s; }
+
+.mega-dropdown {
+  position: fixed;
+  top: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1160px;
+  max-width: calc(100vw - 40px);
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  z-index: 999;
+  animation: ddFadeIn 0.18s ease;
+}
+
+@keyframes ddFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Caret arrow above dropdown */
+.mega-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-10px);
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.08));
+}
+
+.mega-dropdown-inner {
+  display: grid;
+  grid-template-columns: 220px 240px 1fr 260px;
+  min-height: 480px;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+/* ---- Col 1: Browse by Exam ---- */
+.dd-col-exam {
+  background: #fff8f0;
+  padding: 18px 0 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #f0e8e0;
+}
+
+.dd-col-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 4px;
+}
+
+.dd-header-icon { font-size: 16px; }
+
+.exam-list { flex: 1; }
+
+.exam-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 13.5px;
+  color: #333;
+  border-left: 3px solid transparent;
+}
+
+.exam-item:hover { background: #fff0e0; border-left-color: #f97316; }
+
+.exam-item.active {
+  background: #fff0e0;
+  border-left-color: #f97316;
+  color: #f97316;
+  font-weight: 600;
+}
+
+.exam-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
+.exam-name { flex: 1; }
+.exam-chevron { color: #aaa; font-size: 18px; font-weight: 300; margin-left: auto; }
+
+.exam-item.active .exam-chevron { color: #f97316; }
+
+.premium-courses {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #f0eeff;
+  border-top: 1px solid #e0d8f8;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.premium-star { font-size: 20px; flex-shrink: 0; }
+.premium-title { font-size: 13px; font-weight: 700; color: #5b21b6; }
+.premium-desc { font-size: 11px; color: #7c3aed; line-height: 1.3; }
+
+/* ---- Col 2: SSC Exams ---- */
+.dd-col-ssc {
+  background: #fff;
+  padding: 18px 0 0;
+  border-right: 1px solid #f0f0f0;
+}
+
+.dd-ssc-header {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f97316;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 4px;
+}
+
+.ssc-list { overflow-y: auto; }
+
+.ssc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.ssc-item:hover { background: #fff8f0; }
+
+.ssc-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ssc-badge-text {
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.ssc-info { flex: 1; min-width: 0; }
+.ssc-name { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+.ssc-sub { font-size: 11px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ssc-chevron { color: #bbb; font-size: 18px; flex-shrink: 0; }
+
+/* ---- Col 3: Popular SSC Courses ---- */
+.dd-col-popular {
+  background: #fff;
+  padding: 18px 16px;
+  border-right: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dd-col-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.popular-list { flex: 1; display: flex; flex-direction: column; gap: 0; }
+
+.popular-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: 8px;
+  padding: 8px 6px;
+}
+
+.popular-item:hover { background: #fff8f0; }
+
+.popular-thumb {
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.popular-info { flex: 1; }
+.popular-name { font-size: 13px; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; }
+.popular-type { font-size: 11px; color: #666; margin-bottom: 3px; }
+.popular-meta { font-size: 11px; color: #888; margin-bottom: 4px; }
+
+.popular-price { display: flex; align-items: center; gap: 8px; }
+.pop-price { font-size: 14px; font-weight: 800; color: #1a1a2e; }
+.pop-original { font-size: 12px; color: #aaa; text-decoration: line-through; }
+
+.view-all-ssc {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  padding: 10px;
+  border: 2px solid #f97316;
+  border-radius: 8px;
+  color: #f97316;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+}
+.view-all-ssc:hover { background: #f97316; color: #fff; }
+
+/* ---- Col 4: Why Learn ---- */
+.dd-col-why {
+  background: #fff;
+  padding: 18px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dd-col-why .dd-col-title { margin-bottom: 0; }
+
+.why-orange { color: #f97316; }
+
+.why-list { display: flex; flex-direction: column; gap: 10px; }
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.why-icon {
+  width: 32px;
+  height: 32px;
+  background: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.why-title { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+.why-desc { font-size: 11px; color: #666; line-height: 1.3; }
+
+.dd-app-box {
+  background: #fff8f0;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  border: 1px solid #ffe0c0;
+}
+
+.dd-app-left { flex: 1; }
+.dd-app-title { font-size: 14px; font-weight: 800; color: #1a1a2e; margin-bottom: 2px; }
+.dd-app-sub { font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.4; }
+
+.dd-store-row { display: flex; flex-direction: column; gap: 5px; }
+.dd-store-img { height: 28px; border-radius: 4px; }
+
+.dd-app-phone { font-size: 44px; flex-shrink: 0; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
   .hero-right { display: none; }
